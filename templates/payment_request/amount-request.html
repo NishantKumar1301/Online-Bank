@@ -22,7 +22,6 @@
                             <div class="single-user">
                                 <div class="left d-flex align-items-center">
                                     <div class="img-area">
-                                        <!-- <img src="{{ a.user.kyc.image.url }}" alt="image"> -->
                                         <img src="{{ account.user.kyc.image.url }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;"  alt="image">
     
                                     </div>
@@ -35,7 +34,6 @@
                                 <div class="right">
                                     
                                     <a href="{% url 'core:search-account' %}">
-                                        <i class="icon-h-edit"></i>
                                         Edit
                                     </a>
                                 </div>
@@ -49,9 +47,9 @@
                             <div class="input-area">
                                 <input class="xxlr" placeholder="Enter Amount Request" type="number" name="amount-request" id="amount-request">
                                 <select>
-                                    <option value="1">USD</option>
+                                    <option value="1">INR</option>
                                     <option value="2">USD</option>
-                                    <option value="3">USD</option>
+                                    <option value="3">AUS</option>
                                 </select>
                             </div>
                             

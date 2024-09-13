@@ -60,13 +60,13 @@ def dashboard(request):
     if request.user.is_authenticated:
         try:
             kyc = KYC.objects.get(user=request.user)
-        except:
+        except KYC.DoesNotExist:
             messages.warning(request, "You need to submit your kyc")
             return redirect("account:kyc-reg")
         
+        # Fetch recent transactions
         recent_transfer = Transaction.objects.filter(sender=request.user, transaction_type="transfer", status="completed").order_by("-id")[:1]
         recent_recieved_transfer = Transaction.objects.filter(reciever=request.user, transaction_type="transfer").order_by("-id")[:1]
-
 
         sender_transaction = Transaction.objects.filter(sender=request.user, transaction_type="transfer").order_by("-id")
         reciever_transaction = Transaction.objects.filter(reciever=request.user, transaction_type="transfer").order_by("-id")
@@ -74,10 +74,14 @@ def dashboard(request):
         request_sender_transaction = Transaction.objects.filter(sender=request.user, transaction_type="request")
         request_reciever_transaction = Transaction.objects.filter(reciever=request.user, transaction_type="request")
         
-        
+        # Fetch user account and credit cards
         account = Account.objects.get(user=request.user)
         credit_card = CreditCard.objects.filter(user=request.user).order_by("-id")
 
+        # Fetch notifications for the logged-in user
+        notifications = Notification.objects.filter(user=request.user).order_by('-date')
+
+        # Handle form submission for adding a credit card
         if request.method == "POST":
             form = CreditCardForm(request.POST)
             if form.is_valid():
@@ -85,12 +89,12 @@ def dashboard(request):
                 new_form.user = request.user 
                 new_form.save()
                 
+                # Create a notification for adding a new credit card
                 Notification.objects.create(
                     user=request.user,
                     notification_type="Added Credit Card"
                 )
                 
-                card_id = new_form.card_id
                 messages.success(request, "Card Added Successfully.")
                 return redirect("account:dashboard")
         else:
@@ -100,18 +104,18 @@ def dashboard(request):
         messages.warning(request, "You need to login to access the dashboard")
         return redirect("userauths:sign-in")
 
+    # Add notifications to the context
     context = {
-        "kyc":kyc,
-        "account":account,
-        "form":form,
-        "credit_card":credit_card,
-        "sender_transaction":sender_transaction,
-        "reciever_transaction":reciever_transaction,
-
-        'request_sender_transaction':request_sender_transaction,
-        'request_reciever_transaction':request_reciever_transaction,
-        'recent_transfer':recent_transfer,
-        'recent_recieved_transfer':recent_recieved_transfer,
+        "kyc": kyc,
+        "account": account,
+        "form": form,
+        "credit_card": credit_card,
+        "sender_transaction": sender_transaction,
+        "reciever_transaction": reciever_transaction,
+        "request_sender_transaction": request_sender_transaction,
+        "request_reciever_transaction": request_reciever_transaction,
+        "recent_transfer": recent_transfer,
+        "recent_recieved_transfer": recent_recieved_transfer,
+        "notifications": notifications,  # Added notifications to the context
     }
     return render(request, "account/dashboard.html", context)
-    

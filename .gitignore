@@ -1,0 +1,80 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+VENV/
+.venv/
+.ENV/
+env.bak/
+venv.bak/
+
+# Django static and media files
+/static/
+/media/
+
+# Local settings
+local_settings.py
+
+# Environment variables file
+.env
+
+# Database files
+*.sqlite3
+
+# Secrets
+*.pem
+
+# Django migration files
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# VSCode settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# PyCharm settings
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Log files
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Bandit
+bandit.yaml
+
+# Sphinx documentation
+docs/_build/
+
+# Pyre type check reports
+.pyre/
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# Pycharm
+.idea/

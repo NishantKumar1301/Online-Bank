@@ -46,7 +46,7 @@
                                         <div class="right-bottom">
                                             
                                             {% for recent_transfer in recent_transfer %}
-                                                <h4><small>${{recent_transfer.amount|intcomma}}</small></h4>
+                                                <h4><small>Rs.{{recent_transfer.amount|intcomma}}</small></h4>
                                             {% endfor %}
                                             <h5><small>Recent Transfer</small></h5>
                                         </div>
@@ -136,7 +136,7 @@
                                                                 {% endif %}
                                                             </td>
                                                             <td>
-                                                                <p>-${{s.amount|intcomma}}</p>
+                                                                <p>-Rs.{{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
                                                                 <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=""><i class="fas fa-eye"></i></a>
@@ -188,7 +188,7 @@
                                                                 {% endif %}
                                                             </td>
                                                             <td>
-                                                                <p>+${{s.amount|intcomma}}</p>
+                                                                <p>+Rs.{{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
                                                                 <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=""><i class="fas fa-eye"></i></a>
@@ -248,7 +248,7 @@
                                                                 {% endif %}
                                                             </td>
                                                             <td>
-                                                                <p>+${{s.amount|intcomma}}</p>
+                                                                <p>+Rs.{{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
                                                                 {% if s.status == "request_sent" %}
@@ -321,7 +321,7 @@
                                                                 {% endif %}
                                                             </td>
                                                             <td>
-                                                                <p>+${{s.amount|intcomma}}</p>
+                                                                <p>+Rs.{{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
                                                                 
@@ -383,7 +383,7 @@
                                                     </div>
                                                     <div class="bottom_card">
                                                         <div class="card_info">
-                                                        <div class="card_holder_name">${{c.amount|intcomma}}</div>
+                                                        <div class="card_holder_name">Rs.{{c.amount|intcomma}}</div>
                                                         <div class="card_holder_name">{{c.name}}</div>
                                                         </div>
                                                         <div class="card_info">
@@ -457,22 +457,22 @@
                                                 <div class="text-area">
                                                     
                                                     {% if n.notification_type == "Credit Alert" %}
-                                                    <p class="mdr">You received a payment of <b>${{n.amount}}</b></p>
+                                                    <p class="mdr">You received a payment of <b>Rs.{{n.amount}}</b></p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Debit Alert" %}
-                                                    <p class="mdr">You sent a payment of <b>${{n.amount}}</b></p>
+                                                    <p class="mdr">You sent a payment of <b>Rs.{{n.amount}}</b></p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Sent Payment Request" %}
-                                                    <p class="mdr">You sent a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    <p class="mdr">You sent a <b>payment request</b> of <b>Rs.{{n.amount}}</b></p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Recieved Payment Request" %}
-                                                    <p class="mdr">You received a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    <p class="mdr">You received a <b>payment request</b> of <b>Rs.{{n.amount}}</b></p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Funded Credit Card" %}
-                                                    <p class="mdr">You funded your credit card with <b>${{n.amount}}</b></p>
+                                                    <p class="mdr">You funded your credit card with <b>Rs.{{n.amount}}</b></p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Withdrew Credit Card Funds" %}
-                                                    <p class="mdr">You withdrew <b>${{n.amount}}</b> from your credit card</p>
+                                                    <p class="mdr">You withdrew <b>Rs.{{n.amount}}</b> from your credit card</p>
                                                     {% endif %}
                                                     {% if n.notification_type == "Deleted Credit Card" %}
                                                     <p class="mdr">You deleted your credit card</p>
@@ -548,7 +548,7 @@
                                                             <span>17 Oct, 2020</span>
                                                         </p>
                                                         <p class="right">
-                                                            <span>$160.48</span>
+                                                            <span>Rs.160.48</span>
                                                             <span>Withdraw</span>
                                                         </p>
                                                     </li>
@@ -558,7 +558,7 @@
                                                             <span>15 Oct, 2021</span>
                                                         </p>
                                                         <p class="right">
-                                                            <span>$106.58</span>
+                                                            <span>Rs.106.58</span>
                                                             <span>Withdraw</span>
                                                         </p>
                                                     </li>
@@ -568,7 +568,7 @@
                                                             <span>12 Oct, 2020</span>
                                                         </p>
                                                         <p class="right">
-                                                            <span>$176.58</span>
+                                                            <span>Rs.176.58</span>
                                                             <span>Withdraw</span>
                                                         </p>
                                                     </li>
@@ -578,7 +578,7 @@
                                                             <span>25 Oct, 2020</span>
                                                         </p>
                                                         <p class="right">
-                                                            <span>$167.85</span>
+                                                            <span>Rs.167.85</span>
                                                             <span>Withdraw</span>
                                                         </p>
                                                     </li>
@@ -595,7 +595,7 @@
                                                     <div class="input-area">
                                                         <input class="xxlr" placeholder="400.00" type="number">
                                                         <select>
-                                                            <option value="1">USD</option>
+                                                            <option value="1">INR</option>
                                                             <option value="2">USD</option>
                                                             <option value="3">USD</option>
                                                         </select>
@@ -714,7 +714,7 @@
                                             <div class="text-area">
                                                 <h6>Envato Pty Ltd</h6>
                                                 <p>16 Jan 2022</p>
-                                                <h3>717.14 USD</h3>
+                                                <h3>717.14 INR</h3>
                                                 <p class="com">Completed</p>
                                             </div>
                                         </div>
@@ -724,15 +724,15 @@
                                                 <ul class="payment-details">
                                                     <li>
                                                         <span>Payment Amount</span>
-                                                        <span>718.64 USD</span>
+                                                        <span>718.64 INR</span>
                                                     </li>
                                                     <li>
                                                         <span>Fee</span>
-                                                        <span>1.50 USD</span>
+                                                        <span>1.50 INR</span>
                                                     </li>
                                                     <li>
                                                         <span>Total Amount</span>
-                                                        <span>717.14 USD</span>
+                                                        <span>717.14 INR</span>
                                                     </li>
                                                 </ul>
                                                 <ul class="payment-info">
