@@ -84,11 +84,19 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.parse(
+#         os.environ.get("DATABASE_URL", ""),
+#         conn_max_age=600,  # Sets the maximum connection age for performance
+#         ssl_require=True   # Enforces SSL for security; adjust based on your needs
+#     )
+# }
+
 DATABASES = {
     'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL", ""),
-        conn_max_age=600,  # Sets the maximum connection age for performance
-        ssl_require=True   # Enforces SSL for security; adjust based on your needs
+        'postgresql://postgres:hnqkAvGZtsoXHCFBgCWKctsKcpDDmJCE@autorack.proxy.rlwy.net:23569/railway',
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
